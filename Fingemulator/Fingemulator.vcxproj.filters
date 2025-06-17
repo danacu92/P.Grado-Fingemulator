@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de origen">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Sistemas">
+      <UniqueIdentifier>{8e1a479e-5e7f-4eeb-b43d-883ace54802b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sistemas\NES">
+      <UniqueIdentifier>{f91554fc-26a8-4052-91cb-315a720a2402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CPUs">
+      <UniqueIdentifier>{69ac69ce-8b5e-4ec0-aae3-ef33382c09cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rollback">
+      <UniqueIdentifier>{478eae0e-a991-4413-a10f-6b77031f5175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{da9342a7-31e2-4c56-a4aa-3cb022f133a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sistemas\NES\APU">
+      <UniqueIdentifier>{70c5797d-417a-49d6-b03a-5930c4947e5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sistemas\NES\Mappers">
+      <UniqueIdentifier>{4e3ee35f-76da-4a9e-a05b-b1fc4bb3f157}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sistema.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="PPUv2.h">
+      <Filter>Sistemas\NES</Filter>
+    </ClInclude>
+    <ClInclude Include="NES.h">
+      <Filter>Sistemas\NES</Filter>
+    </ClInclude>
+    <ClInclude Include="Cartucho.h">
+      <Filter>Sistemas\NES</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapper.h">
+      <Filter>Sistemas\NES</Filter>
+    </ClInclude>
+    <ClInclude Include="m6502_2A03.h">
+      <Filter>CPUs</Filter>
+    </ClInclude>
+    <ClInclude Include="Emulator.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Rollback.h">
+      <Filter>Rollback</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Rollback\ggponet.h">
+      <Filter>Rollback</Filter>
+    </ClInclude>
+    <ClInclude Include="APU\apu.h">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClInclude>
+    <ClInclude Include="APU\Sound_Queue.h">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClInclude>
+    <ClInclude Include="APU\boost\config.hpp">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClInclude>
+    <ClInclude Include="APU\boost\cstdint.hpp">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClInclude>
+    <ClInclude Include="APU\boost\static_assert.hpp">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClInclude>
+    <ClInclude Include="APU\nes_apu\apu_snapshot.h">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClInclude>
+    <ClInclude Include="APU\nes_apu\blargg_common.h">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClInclude>
+    <ClInclude Include="APU\nes_apu\blargg_source.h">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClInclude>
+    <ClInclude Include="APU\nes_apu\Blip_Buffer.h">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClInclude>
+    <ClInclude Include="APU\nes_apu\Blip_Synth.h">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClInclude>
+    <ClInclude Include="APU\nes_apu\Multi_Buffer.h">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClInclude>
+    <ClInclude Include="APU\nes_apu\Nes_Apu.h">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClInclude>
+    <ClInclude Include="APU\nes_apu\Nes_Oscs.h">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClInclude>
+    <ClInclude Include="APU\nes_apu\Nonlinear_Buffer.h">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapper_0.h">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapper_2.h">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapper_3.h">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapper_4.h">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Cartucho.cpp">
+      <Filter>Sistemas\NES</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapper.cpp">
+      <Filter>Sistemas\NES</Filter>
+    </ClCompile>
+    <ClCompile Include="NES.cpp">
+      <Filter>Sistemas\NES</Filter>
+    </ClCompile>
+    <ClCompile Include="PPUv2.cpp">
+      <Filter>Sistemas\NES</Filter>
+    </ClCompile>
+    <ClCompile Include="m6502_2A03.cpp">
+      <Filter>CPUs</Filter>
+    </ClCompile>
+    <ClCompile Include="Emulator.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Rollback.cpp">
+      <Filter>Rollback</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\imgui\imgui.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\imgui\imgui_draw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\imgui\imgui_impl_sdl2.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\imgui\imgui_impl_sdlrenderer2.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\imgui\imgui_tables.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\imgui\imgui_widgets.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="APU\apu.cpp">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClCompile>
+    <ClCompile Include="APU\Sound_Queue.cpp">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClCompile>
+    <ClCompile Include="APU\nes_apu\apu_snapshot.cpp">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClCompile>
+    <ClCompile Include="APU\nes_apu\Blip_Buffer.cpp">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClCompile>
+    <ClCompile Include="APU\nes_apu\Multi_Buffer.cpp">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClCompile>
+    <ClCompile Include="APU\nes_apu\Nes_Apu.cpp">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClCompile>
+    <ClCompile Include="APU\nes_apu\Nes_Oscs.cpp">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClCompile>
+    <ClCompile Include="APU\nes_apu\Nonlinear_Buffer.cpp">
+      <Filter>Sistemas\NES\APU</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapper_0.cpp">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapper_2.cpp">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapper_3.cpp">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapper_4.cpp">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

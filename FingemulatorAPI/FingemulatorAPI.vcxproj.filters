@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de origen">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Sistemas">
+      <UniqueIdentifier>{9fc43243-9eb9-4e10-8e89-e99e0390ff90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sistemas\NES">
+      <UniqueIdentifier>{3c2b74cc-16da-482b-9bc8-4208cb8e0511}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sistemas\CPUS">
+      <UniqueIdentifier>{d25b1034-9240-4345-b4e3-29b9e16429d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sistemas\NES\Mappers">
+      <UniqueIdentifier>{263d4581-7fee-4bcb-9a22-6922a7fa9cf8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="FingemulatorAPI.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="iEmulator.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="EmuAPI.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Fingemulator\Mapper_0.h">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Fingemulator\Mapper_2.h">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Fingemulator\Mapper_3.h">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Fingemulator\Mapper_4.h">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FingemulatorAPI.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fingemulator\Cartucho.cpp">
+      <Filter>Sistemas\NES</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fingemulator\Mapper.cpp">
+      <Filter>Sistemas\NES</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fingemulator\NES.cpp">
+      <Filter>Sistemas\NES</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fingemulator\PPUv2.cpp">
+      <Filter>Sistemas\NES</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fingemulator\m6502_2A03.cpp">
+      <Filter>Sistemas\CPUS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fingemulator\Mapper_0.cpp">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fingemulator\Mapper_2.cpp">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fingemulator\Mapper_3.cpp">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fingemulator\Mapper_4.cpp">
+      <Filter>Sistemas\NES\Mappers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FingemulatorAPI.rc">
+      <Filter>Archivos de recursos</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
