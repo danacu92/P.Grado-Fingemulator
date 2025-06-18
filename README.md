@@ -28,7 +28,7 @@ El proyecto está compuesto por tres módulos:
 
 ---
 
-## 🧠 Características principales
+## Características principales
 
 - Emulador de **Nintendo Entertainment System (NES)** implementado desde cero e integrado a la plataforma. Soporta juegos con Mapper 0, 2, 3 y 4.
 - Arquitectura preparada para agregar más consolas en el futuro y reutilizar componentes de hardware ya implementados.
@@ -107,7 +107,7 @@ The prototype was built for **x64 architectures** and **Windows OS**.
 
 ---
 
-### 🧩 System Components
+### System Components
 
 The project consists of three main modules:
 
@@ -209,7 +209,7 @@ Das Projekt besteht aus drei modulen:
 
 ---
 
-## 🧠 Hauptfunktionen
+## Hauptfunktionen
 
 - Ein **Nintendo Entertainment System (NES)**-Emulator, der von Grund auf neu entwickelt und in die Plattform integriert wurde. Unterstützt Spiele mit Mapper 0, 2, 3 und 4.
 - Architektur vorbereitet für die zukünftige Integration weiterer Konsolen und Wiederverwendung bereits implementierter Hardwarekomponenten.
