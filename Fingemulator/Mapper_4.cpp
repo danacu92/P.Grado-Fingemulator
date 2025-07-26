@@ -237,3 +237,11 @@ void Mapper_4::ScanlineSignal()
 	if (IRQ_counter == 0 && IRQ_Enabled)
 		IRQ = true;
 }
+
+void Mapper_4::saveMapperState(unsigned char*& buffer, int& size)
+{
+}
+
+void Mapper_4::loadMapperState(unsigned char* buffer, int size)
+{
+}

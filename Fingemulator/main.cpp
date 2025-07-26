@@ -273,7 +273,6 @@ bool runahead = false;
 void cagarROM_nes() {
     emu->set_System(nes);
     if (emu->loadRom() > 0) {
-        emu->cleanRunaheadSave();
         emu->PowerOn();
         runahead = false;
         native_res_height = 240;
@@ -546,6 +545,9 @@ void mainMenu() {
             }
             if (emu->emuState == RunningOffline) {
                 if (ImGui::MenuItem("Runahead", nullptr, &runahead)) {
+                    if (!runahead) {
+                        emu->cleanAheadState();
+                    }
                 }
             }
             else

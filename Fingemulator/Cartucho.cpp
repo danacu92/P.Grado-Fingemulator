@@ -94,6 +94,32 @@ void Cartucho::Reset()
 		mapper->reset();
 }
 
+void Cartucho::getMapperState(unsigned char*& buffer, int& size)
+{
+	if (bancosCHR> 0)
+	mapper->saveMapperState(buffer, size);
+	else {
+		unsigned char* mapperState;
+		int sizeMapper;
+		mapper->saveMapperState(mapperState, sizeMapper);
+		size = CHRmemory.size() + sizeMapper;
+		buffer = new unsigned char[size];
+		memcpy(buffer, CHRmemory.data(), CHRmemory.size());
+		memcpy(buffer + CHRmemory.size(), mapperState, sizeMapper);
+		delete[] mapperState;
+	}
+}
+
+void Cartucho::loadMapperState(unsigned char* buffer, int size)
+{
+	if (bancosCHR > 0)
+	mapper->loadMapperState(buffer, size);
+	else {
+		memcpy(CHRmemory.data(), buffer , CHRmemory.size());
+		mapper->loadMapperState(buffer + CHRmemory.size(), size - CHRmemory.size());
+	}
+}
+
 
 bool Cartucho::valid_rom()
 {

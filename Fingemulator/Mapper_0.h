@@ -14,6 +14,8 @@ public:
 	bool ppu_read(Word addres, uint32_t& mapeada) override;
 	bool ppu_write(Word addres, uint32_t& mapeada) override;
 	void reset() override;
+	void saveMapperState(unsigned char*& buffer, int& size) override { size = 0;};
+	void loadMapperState(unsigned char* buffer, int size) override {};
 	MIRROR getMirror() override;
 
 };

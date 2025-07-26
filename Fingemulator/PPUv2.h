@@ -105,8 +105,6 @@ struct PPUState {
 	bool nmi;
 	bool no_nmi_este_frame;
 
-
-	uint32_t pixelBuffer[WIDTH * HEIGHT];
 };
 
 class PPUv2

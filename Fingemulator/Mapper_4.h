@@ -19,7 +19,8 @@ public:
 	void reset() override;
 	void set_banks();
 	void ScanlineSignal() override;
-
+	void saveMapperState(unsigned char*& buffer, int& size) override;
+	void loadMapperState(unsigned char* buffer, int size)override;
 private:
 
 	Byte c_PRGRAM[BLOCK_8KB] = {}; // RAM PRG del cartucho

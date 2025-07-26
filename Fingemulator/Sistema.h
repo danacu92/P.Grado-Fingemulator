@@ -18,6 +18,7 @@ public:
 	virtual bool load_rom(const std::string& filename) = 0;
 	virtual void SaveState(unsigned char* &buffer, int &lenght) = 0;
 	virtual void LoadState(unsigned char* buffer) = 0;
+	virtual void DeleteState(unsigned char* buffer) = 0;
 	virtual void DesactivarSonido() = 0;
 	virtual void ActivarSonido() = 0;
 };
