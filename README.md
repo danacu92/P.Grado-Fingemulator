@@ -1,5 +1,91 @@
 # 🎮 FingEmulator
 
+## 📗 English
+
+**FingEmulator** is a multi-console emulation platform prototype, with a modular and scalable architecture, focused on online multiplayer gaming. It was developed and presented as a graduation project for the **Computer Engineering degree**.  
+The prototype was built for **x64 architectures** and **Windows OS**.
+
+---
+
+### 🧩 Platform Architecture
+
+![Screenshot_2](https://github.com/user-attachments/assets/026bfb09-2607-4e4c-a2db-548ae69749c7)
+
+---
+
+### System Components
+
+The project consists of three main modules:
+
+- **FingEmulator**  
+  Module where the entire emulation platform is implemented, including the NES emulator. Its modular architecture allows new consoles to be added in the future with minimal changes.
+
+- **FingEmulatorAPI**  
+  Interface that allows programmatic control of the platform. Useful, for example, in AI projects that learn to play retro games.
+
+- **TestAPI**  
+  Example project demonstrating how to use the FingEmulatorAPI.
+
+---
+
+## 🧠 Key Features
+
+- A **Nintendo Entertainment System (NES)** emulator developed from scratch and integrated into the platform. Supports games using Mapper 0, 2, 3, and 4.
+- Architecture designed to support more consoles in the future and to reuse existing hardware components.
+- **Online multiplayer support** using rollback netcode through the **GGPO** library.  
+  *(Online mode is currently available only for Mapper 0 games, since save state management for other mappers has not yet been implemented.)*
+- GamePad support.
+- Basic graphical interface.
+- **Experimental Runahead option** to reduce input lag.
+
+---
+
+## 🛠️ Technologies Used
+
+- **C++**
+- **SDL 2.0** – Graphics, audio, and input handling.
+- **ImGui** – Graphical user interface.
+- **GGPO** – Netcode implementation.
+- **Visual Studio 2019** – Development environment.
+- [Clumsy](https://jagt.github.io/clumsy/) – Used to test online multiplayer.
+- [Nes_Snd_Emu: NES Sound Emulator](https://github.com/jamesathey/Nes_Snd_Emu) – For audio emulation.
+
+---
+
+## 📦 Dependencies
+
+All used dependencies are open-source and included in the `FingEmulator/deps` folder.
+
+---
+
+## ⚙️ Build Instructions
+
+1. Clone or download the repository.
+2. Open the `.sln` solution file using **Visual Studio 2019**.
+3. Select **Release** configuration and **x64** platform.
+4. Build the projects in the following order:
+   - `FingEmulatorAPI`
+   - `FingEmulator`
+   - `TestAPI`
+
+> ⚠️ Building in the correct order is important to avoid reference errors between projects.
+
+---
+
+## 🚀 How to Run `TestAPI`
+
+1. Build the `TestAPI` project in **Release x64** mode.
+2. Drag and drop an **NES ROM (Mapper 0)** onto the executable (`TestAPI.exe`).
+3. The emulator will start automatically and begin running the ROM.
+
+
+---
+
+## 🌍 Project Status
+
+This project was presented as a final requirement for the **Computer Engineering degree** and is considered formally completed.  
+However, it may receive **occasional updates** for maintenance or minor improvements.
+---
 ## 📘 Español
 
 **FingEmulator** es un prototipo de plataforma de emulación multiconsola, con un enfoque modular, escalable y orientado al juego multijugador online. Fue desarrollado y presentado como parte del proyecto de grado para la obtención del título de **Ingeniero en Computación**.  
@@ -93,93 +179,6 @@ Sin embargo, podrá recibir actualizaciones ocasionales para mantenimiento o mej
 
 ---
 
-
-## 📗 English
-
-**FingEmulator** is a multi-console emulation platform prototype, with a modular and scalable architecture, focused on online multiplayer gaming. It was developed and presented as a graduation project for the **Computer Engineering degree**.  
-The prototype was built for **x64 architectures** and **Windows OS**.
-
----
-
-### 🧩 Platform Architecture
-
-![Screenshot_2](https://github.com/user-attachments/assets/026bfb09-2607-4e4c-a2db-548ae69749c7)
-
----
-
-### System Components
-
-The project consists of three main modules:
-
-- **FingEmulator**  
-  Module where the entire emulation platform is implemented, including the NES emulator. Its modular architecture allows new consoles to be added in the future with minimal changes.
-
-- **FingEmulatorAPI**  
-  Interface that allows programmatic control of the platform. Useful, for example, in AI projects that learn to play retro games.
-
-- **TestAPI**  
-  Example project demonstrating how to use the FingEmulatorAPI.
-
----
-
-## 🧠 Key Features
-
-- A **Nintendo Entertainment System (NES)** emulator developed from scratch and integrated into the platform. Supports games using Mapper 0, 2, 3, and 4.
-- Architecture designed to support more consoles in the future and to reuse existing hardware components.
-- **Online multiplayer support** using rollback netcode through the **GGPO** library.  
-  *(Online mode is currently available only for Mapper 0 games, since save state management for other mappers has not yet been implemented.)*
-- GamePad support.
-- Basic graphical interface.
-- **Experimental Runahead option** to reduce input lag.
-
----
-
-## 🛠️ Technologies Used
-
-- **C++**
-- **SDL 2.0** – Graphics, audio, and input handling.
-- **ImGui** – Graphical user interface.
-- **GGPO** – Netcode implementation.
-- **Visual Studio 2019** – Development environment.
-- [Clumsy](https://jagt.github.io/clumsy/) – Used to test online multiplayer.
-- [Nes_Snd_Emu: NES Sound Emulator](https://github.com/jamesathey/Nes_Snd_Emu) – For audio emulation.
-
----
-
-## 📦 Dependencies
-
-All used dependencies are open-source and included in the `FingEmulator/deps` folder.
-
----
-
-## ⚙️ Build Instructions
-
-1. Clone or download the repository.
-2. Open the `.sln` solution file using **Visual Studio 2019**.
-3. Select **Release** configuration and **x64** platform.
-4. Build the projects in the following order:
-   - `FingEmulatorAPI`
-   - `FingEmulator`
-   - `TestAPI`
-
-> ⚠️ Building in the correct order is important to avoid reference errors between projects.
-
----
-
-## 🚀 How to Run `TestAPI`
-
-1. Build the `TestAPI` project in **Release x64** mode.
-2. Drag and drop an **NES ROM (Mapper 0)** onto the executable (`TestAPI.exe`).
-3. The emulator will start automatically and begin running the ROM.
-
-
----
-
-## 🌍 Project Status
-
-This project was presented as a final requirement for the **Computer Engineering degree** and is considered formally completed.  
-However, it may receive **occasional updates** for maintenance or minor improvements.
----
 ## 📙 Deutsch
 
 **FingEmulator** ist ein Prototyp einer Multi-Konsolen-Emulationsplattform mit modularer und skalierbarer Architektur, die auf Online-Mehrspielermodus ausgerichtet ist.  
