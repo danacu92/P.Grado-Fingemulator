@@ -85,6 +85,7 @@ All used dependencies are open-source and included in the `FingEmulator/deps` fo
 
 This project was presented as a final requirement for the **Computer Engineering degree** and is considered formally completed.  
 However, it may receive **occasional updates** for maintenance or minor improvements.
+
 ---
 ## 📘 Español
 
