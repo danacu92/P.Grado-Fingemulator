@@ -224,7 +224,7 @@ void Emulator::updateInputs(Word status)
 
 void Emulator::QuickSave()
 {
-    if (quick_save.serialized_state) {
+    if (quick_save.lenght>0) {
         consola->DeleteState(quick_save.serialized_state);  // Libera la memoria previamente asignada
     }
 
@@ -234,7 +234,7 @@ void Emulator::QuickSave()
 
 void Emulator::LoadState(unsigned char* save) {
     if (save == nullptr) {
-        if (quick_save.serialized_state)
+        if (quick_save.lenght>0)
         consola->LoadState(quick_save.serialized_state);
     }
     else {
