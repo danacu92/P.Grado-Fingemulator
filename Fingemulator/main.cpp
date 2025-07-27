@@ -518,7 +518,10 @@ void mainMenu() {
 
         if (ImGui::BeginMenu("Partida")) {
             if (ImGui::MenuItem("Guardado Rapido")) { emu->QuickSave(); }
-            if (ImGui::MenuItem("Cargado Rapido")) { emu->LoadState(); }
+            if (ImGui::MenuItem("Cargado Rapido")) { 
+                emu->LoadState();
+                emu->cleanAheadState();
+            }
             ImGui::EndMenu();
         }
 
