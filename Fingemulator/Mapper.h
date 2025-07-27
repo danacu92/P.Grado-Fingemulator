@@ -33,6 +33,8 @@ public:
 	virtual bool get_IRQ() { return IRQ; };
 	virtual void ScanlineSignal() { };
 	virtual void IRQ_off() { IRQ = false; };
+	virtual void saveMapperState(unsigned char*& buffer, int& size) = 0;
+	virtual void loadMapperState(unsigned char* buffer, int size) = 0;
 
 protected:
 	Byte bancosPRG = 0;

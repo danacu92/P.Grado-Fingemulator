@@ -19,9 +19,18 @@ void Mapper_2::reset()
 
 }
 
-MIRROR Mapper_2::getMirror()
+void Mapper_2::saveMapperState(unsigned char*& buffer, int& size)
 {
-	return mirror;
+	// Para guardar el estado del mapper, solo se necesita el primer byte PGRmap, el segundo es fijo.
+	size = sizeof(PGRmap[0]);
+	buffer = new unsigned char[size];
+	*buffer = (unsigned char)PGRmap[0];
+	
+}
+
+void Mapper_2::loadMapperState(unsigned char* buffer, int size)
+{
+	PGRmap[0] = (Byte)*buffer;
 }
 
 bool Mapper_2::cpu_read(Word addres, uint32_t& mapeada, Byte& data)

@@ -22,7 +22,7 @@ enum SYSTEM_NAME
 
 struct save_state{
 	unsigned char* serialized_state;
-	int lenght;
+	int length;
 };
 
 class Emulator
@@ -79,7 +79,8 @@ public:
 	//RunAhead
 	save_state ahaead_state;
 	uint32_t* RunAhead();
-	void cleanRunaheadSave();
+	void deleteSavestate(unsigned char* save);
+	void cleanAheadState();
 	//Rollbacks
 	save_state quick_save;
 	void advance_frame();

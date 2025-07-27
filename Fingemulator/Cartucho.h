@@ -44,5 +44,7 @@ public:
 	void scanlineSignal();
 	MIRROR GetMirrorType();
 	void Reset();
+	void getMapperState(unsigned char*& buffer, int& size);
+	void loadMapperState(unsigned char* buffer, int size);
 };
 

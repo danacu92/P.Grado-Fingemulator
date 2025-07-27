@@ -237,3 +237,37 @@ void Mapper_4::ScanlineSignal()
 	if (IRQ_counter == 0 && IRQ_Enabled)
 		IRQ = true;
 }
+
+void Mapper_4::saveMapperState(unsigned char*& buffer, int& size)
+{
+	mapper4_state* state = new mapper4_state;
+	size = sizeof(mapper4_state); 
+	memcpy(state->c_PRGRAM, c_PRGRAM, sizeof(c_PRGRAM));
+	state->select_register = select_register.reg;
+	memcpy(state->map_registers, map_registers, sizeof(map_registers));
+	memcpy(state->CHRmap, CHRmap, sizeof(CHRmap));
+	memcpy(state->PRGmap, PRGmap, sizeof(PRGmap));
+	state->IRQ_latch = IRQ_latch;
+	state->IRQ_counter = IRQ_counter;
+	state->IRQ_Enabled = IRQ_Enabled;
+	buffer = new unsigned char[size];
+	memcpy(buffer, state, size);
+	delete state;
+}
+
+void Mapper_4::loadMapperState(unsigned char* buffer, int size)
+{
+	mapper4_state* state = new mapper4_state;
+
+	memcpy(state, buffer, sizeof(mapper4_state));
+	memcpy(c_PRGRAM, state->c_PRGRAM, sizeof(c_PRGRAM));
+	select_register.reg = state->select_register;
+	memcpy(map_registers, state->map_registers, sizeof(map_registers));
+	memcpy(CHRmap, state->CHRmap, sizeof(CHRmap));
+	memcpy(PRGmap, state->PRGmap, sizeof(PRGmap));
+	IRQ_latch = state->IRQ_latch;
+	IRQ_counter = state->IRQ_counter;
+	IRQ_Enabled = state->IRQ_Enabled;
+
+	delete state;
+}

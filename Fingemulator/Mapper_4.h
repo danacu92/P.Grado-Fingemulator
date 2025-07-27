@@ -5,6 +5,19 @@
 
 #define BLOCK_8KB   8192 // 8 KB
 #define BLOCK_1KB   1024 // 1 KB
+
+
+
+struct mapper4_state {
+	Byte c_PRGRAM[BLOCK_8KB];
+	Byte select_register;
+	Byte map_registers[8];
+	Byte CHRmap[8];  
+	Byte PRGmap[4]; 
+	Byte IRQ_latch;
+	Byte IRQ_counter;
+	bool IRQ_Enabled;
+};
 class Mapper_4 : public Mapper
 {
 public:
@@ -19,7 +32,8 @@ public:
 	void reset() override;
 	void set_banks();
 	void ScanlineSignal() override;
-
+	void saveMapperState(unsigned char*& buffer, int& size) override;
+	void loadMapperState(unsigned char* buffer, int size)override;
 private:
 
 	Byte c_PRGRAM[BLOCK_8KB] = {}; // RAM PRG del cartucho

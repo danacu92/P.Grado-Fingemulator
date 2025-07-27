@@ -56,3 +56,15 @@ MIRROR Mapper_3::getMirror()
 {
 	return mirror;
 }
+
+void Mapper_3::saveMapperState(unsigned char*& buffer, int& size)
+{
+	buffer = new unsigned char;
+	*buffer = (unsigned char)CHRmap;
+	size = sizeof(CHRmap);
+}
+
+void Mapper_3::loadMapperState(unsigned char* buffer, int size)
+{
+	CHRmap = (Byte)*buffer;
+}

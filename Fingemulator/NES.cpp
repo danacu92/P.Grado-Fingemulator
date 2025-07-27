@@ -222,20 +222,42 @@ void NES::turnON()
 
 
 void NES::LoadState(unsigned char* buffer) {
-	NESState state;
-	memcpy(&state, buffer, sizeof(state)); 
-	LoadNESState(&state);
-	//delete state;
+	NESState* state = new NESState;
+	int nesStateSize = sizeof(NESState);
+	memcpy(state, buffer, nesStateSize);
+	int mapperSize = state->mapperSize;
+	LoadNESState(state);
+	if (mapperSize > 0) {
+		unsigned char* mapperState = new unsigned char[mapperSize];
+		memcpy(mapperState, buffer + nesStateSize, mapperSize);
+		cartucho->loadMapperState(mapperState, mapperSize);
+		delete[] mapperState;
+	}
+	delete state;
 }
 
-void NES::SaveState(unsigned char* &buffer, int &lenght)
+void NES::SaveState(unsigned char* &buffer, int &length)
 {
-	NESState state;
-	SavesNESState(state);
-	lenght = sizeof(state);
-	buffer = new unsigned char[lenght];
-	memcpy(buffer, &state, lenght);
-	//delete state;
+	NESState* state = new NESState;
+	SavesNESState(*state);
+	unsigned char* mapperState;
+	cartucho->getMapperState(mapperState, state->mapperSize);
+	int nesStateSize = sizeof(NESState);
+	int mapperSize = state->mapperSize;
+	length = nesStateSize + mapperSize;
+	buffer = new unsigned char[length];
+	memcpy(buffer, state, nesStateSize);
+	if (mapperSize > 0) {
+		memcpy(buffer + nesStateSize, mapperState, mapperSize);
+		delete mapperState;
+	}
+	delete state;
+}
+
+void NES::DeleteState(unsigned char* buffer)
+{
+	if (!buffer) return;
+	delete[] buffer;
 }
 
 void NES::SavesNESState(NESState& state)
@@ -246,7 +268,7 @@ void NES::SavesNESState(NESState& state)
 	cpu.saveCPUState(state.cpu); // Copiar el estado de la CPU
 	ppu.SavePPUState(state.ppu); // Copiar el estado de la PPU
 	memcpy(state.cpu_ram, cpu_ram, sizeof(cpu_ram));
-	state.framecounter = framecounter;
+	//state.framecounter = framecounter;
 	state.ClockCounter = ClockCounter;
 	state.strobe = strobe;
 	//memcpy(state.controles, controles, sizeof(controles));
@@ -270,7 +292,7 @@ void NES::LoadNESState(NESState* state)
 	cpu.loadCPUState (state->cpu);  // Restaurar el estado de la CPU
 	ppu.LoadPPUState (state->ppu);  // Restaurar el estado de la PPU
 	memcpy(cpu_ram, state->cpu_ram, sizeof(cpu_ram));
-	framecounter = state->framecounter;
+	//framecounter = state->framecounter;
 	ClockCounter = state->ClockCounter;
 	strobe = state->strobe;
 	//memcpy(controles, state->controles, sizeof(controles));

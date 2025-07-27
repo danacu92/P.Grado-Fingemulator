@@ -11,7 +11,8 @@
 
 Emulator::Emulator()
 {
-
+    ahaead_state.length = 0;
+    quick_save.length = 0;
 }
 
 Emulator::~Emulator()
@@ -103,6 +104,10 @@ void Emulator::PowerOn()
     Frame_counter = 0;
     consola->turnON();
     emuState = RunningOffline;
+    if (ahaead_state.length > 0){
+        deleteSavestate(ahaead_state.serialized_state);
+        ahaead_state.length = 0;
+    }
     switch (sys) {
     case nes:
         res_WIDTH = 256;
@@ -171,7 +176,9 @@ void Emulator::PowerOff()
     sys = NoSystem;
     consola = nullptr;
     Frame_counter = 0;
-    cleanRunaheadSave();
+    if (ahaead_state.length >0)
+        deleteSavestate(ahaead_state.serialized_state);
+    ahaead_state.length = 0;
 }
 
 bool Emulator::emuRunning()
@@ -195,7 +202,9 @@ void Emulator::reset()
         consola->reset();
         emuState = RunningOffline;
         Frame_counter = 0;
-        cleanRunaheadSave();
+        if (ahaead_state.length >0)
+            deleteSavestate(ahaead_state.serialized_state);
+        ahaead_state.length = 0;
     }
 }
 
@@ -216,17 +225,17 @@ void Emulator::updateInputs(Word status)
 
 void Emulator::QuickSave()
 {
-    if (quick_save.serialized_state != nullptr) {
-        delete[] quick_save.serialized_state;  // Libera la memoria previamente asignada
+    if (quick_save.length >0) {
+        consola->DeleteState(quick_save.serialized_state);  // Libera la memoria previamente asignada
     }
 
-    consola->SaveState(quick_save.serialized_state, quick_save.lenght);
+    consola->SaveState(quick_save.serialized_state, quick_save.length);
 }
 
 
 void Emulator::LoadState(unsigned char* save) {
     if (save == nullptr) {
-        if (quick_save.serialized_state != nullptr)
+        if (quick_save.length > 0)
         consola->LoadState(quick_save.serialized_state);
     }
     else {
@@ -237,16 +246,16 @@ void Emulator::LoadState(unsigned char* save) {
 uint32_t* Emulator::RunAhead()
 {
     if (emuState == EMULATOR_STATE::RunningOffline) {
-        if (ahaead_state.lenght >0) {
+        if (ahaead_state.length > 0) {
             LoadState(ahaead_state.serialized_state);
-            free (ahaead_state.serialized_state);
-            ahaead_state.lenght = 0;
+            consola->DeleteState(ahaead_state.serialized_state);
+            ahaead_state.length = 0;
         }
         consola->UpdateInputs(inputsP1);
         consola->UpdateInputs(inputsP2);
         frame = consola->run_frame();
         Frame_counter++;
-        consola->SaveState(ahaead_state.serialized_state, ahaead_state.lenght);
+        consola->SaveState(ahaead_state.serialized_state, ahaead_state.length);
         DesactivarSonido();
         uint32_t * frame =  Advance_frame_offline(true);
         ActivarSonido();
@@ -254,12 +263,16 @@ uint32_t* Emulator::RunAhead()
     }
 }
 
-void Emulator::cleanRunaheadSave()
+void Emulator::deleteSavestate(unsigned char* save)
 {
-    if (ahaead_state.lenght > 0) {
-        LoadState(ahaead_state.serialized_state);
-        free(ahaead_state.serialized_state);
-        ahaead_state.lenght = 0;
+    consola->DeleteState(save);   
+}
+
+void Emulator::cleanAheadState()
+{
+    if (ahaead_state.length > 0) {
+        consola->DeleteState(ahaead_state.serialized_state);
+        ahaead_state.length = 0;
     }
 }
     
@@ -282,9 +295,9 @@ void Emulator::advance_frame()
 }
 
 
-void Emulator::rollback_save(unsigned char*& buffer, int* &lenght)
+void Emulator::rollback_save(unsigned char*& buffer, int* &length)
 {
-    consola->SaveState(buffer, *lenght);
+    consola->SaveState(buffer, *length);
 }
 
 

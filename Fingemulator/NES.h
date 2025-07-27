@@ -56,16 +56,22 @@ struct NESState
 
 	// Estado de la PPU (registro, tablas, buffers, etc.)
 	PPUState ppu;
-#ifdef ENABLE_APU
-	//Estado de la APU
-	apu_snapshot_t apu;
-#endif
-	// Estado de los controladores (inputs)
+//
+//#ifdef ENABLE_APU
+//	//Estado de la APU
+//	apu_snapshot_t apu;
+//#endif
+
+	// Estado mapper
+	int mapperSize;
+
+	// Estado de los controles (inputs)
 	Controller controles[2];
 	Vcontroller new_controller_state[2];
 	bool strobe;
 	bool playerpar;
 
+	// Estado dma
 	bool transfer_dma;
 	bool transfiriendo;
 	Byte dma_page;
@@ -73,7 +79,7 @@ struct NESState
 	Byte dma_data;
 
 	// Otros atributos 
-	uint32_t framecounter;
+	// uint32_t framecounter; no es necesario
 	uint32_t ClockCounter;
 
 
@@ -108,11 +114,12 @@ public:
 	//load save state
 	void LoadState(unsigned char* buffer) override;
 	void SaveState(unsigned char* &buffer, int &lenght) override;
-	
+	void DeleteState(unsigned char* buffer) override;
 	void SavesNESState(NESState &state);
 
 	void LoadNESState(NESState* state);
 
+	
 	//operaciones de correr
 	void clock() override;
 	uint32_t framecounter = 0;

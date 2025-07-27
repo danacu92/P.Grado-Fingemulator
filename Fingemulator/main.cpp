@@ -273,7 +273,6 @@ bool runahead = false;
 void cagarROM_nes() {
     emu->set_System(nes);
     if (emu->loadRom() > 0) {
-        emu->cleanRunaheadSave();
         emu->PowerOn();
         runahead = false;
         native_res_height = 240;
@@ -491,7 +490,8 @@ void RenderGameInImGui(SDL_Renderer* renderer) {
     ImGui::SetNextWindowSize(availableSize);
 
     // Renderizar la textura del juego dentro de la ventana ImGui centrada
-    ImGui::Begin("Game Window", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBringToFrontOnFocus);
+    ImGui::Begin("Game Window", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBringToFrontOnFocus 
+        | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoNav);
     ImGui::SetCursorPos(ImVec2((availableSize.x - textureSize.x) / 2, (availableSize.y - textureSize.y) / 2));
     ImGui::Image(reinterpret_cast<ImTextureID>(gameTexture), textureSize);
     ImGui::End();
@@ -519,7 +519,10 @@ void mainMenu() {
 
         if (ImGui::BeginMenu("Partida")) {
             if (ImGui::MenuItem("Guardado Rapido")) { emu->QuickSave(); }
-            if (ImGui::MenuItem("Cargado Rapido")) { emu->LoadState(); }
+            if (ImGui::MenuItem("Cargado Rapido")) { 
+                emu->LoadState();
+                emu->cleanAheadState();
+            }
             ImGui::EndMenu();
         }
 
@@ -546,6 +549,9 @@ void mainMenu() {
             }
             if (emu->emuState == RunningOffline) {
                 if (ImGui::MenuItem("Runahead", nullptr, &runahead)) {
+                    if (!runahead) {
+                        emu->cleanAheadState();
+                    }
                 }
             }
             else
