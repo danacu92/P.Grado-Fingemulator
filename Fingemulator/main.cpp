@@ -490,7 +490,8 @@ void RenderGameInImGui(SDL_Renderer* renderer) {
     ImGui::SetNextWindowSize(availableSize);
 
     // Renderizar la textura del juego dentro de la ventana ImGui centrada
-    ImGui::Begin("Game Window", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBringToFrontOnFocus);
+    ImGui::Begin("Game Window", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBringToFrontOnFocus 
+        | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoNav);
     ImGui::SetCursorPos(ImVec2((availableSize.x - textureSize.x) / 2, (availableSize.y - textureSize.y) / 2));
     ImGui::Image(reinterpret_cast<ImTextureID>(gameTexture), textureSize);
     ImGui::End();
