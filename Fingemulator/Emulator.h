@@ -22,7 +22,7 @@ enum SYSTEM_NAME
 
 struct save_state{
 	unsigned char* serialized_state;
-	int lenght;
+	int length;
 };
 
 class Emulator

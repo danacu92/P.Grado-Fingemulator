@@ -236,7 +236,7 @@ void NES::LoadState(unsigned char* buffer) {
 	delete state;
 }
 
-void NES::SaveState(unsigned char* &buffer, int &lenght)
+void NES::SaveState(unsigned char* &buffer, int &length)
 {
 	NESState* state = new NESState;
 	SavesNESState(*state);
@@ -244,8 +244,8 @@ void NES::SaveState(unsigned char* &buffer, int &lenght)
 	cartucho->getMapperState(mapperState, state->mapperSize);
 	int nesStateSize = sizeof(NESState);
 	int mapperSize = state->mapperSize;
-	lenght = nesStateSize + mapperSize;
-	buffer = new unsigned char[lenght];
+	length = nesStateSize + mapperSize;
+	buffer = new unsigned char[length];
 	memcpy(buffer, state, nesStateSize);
 	if (mapperSize > 0) {
 		memcpy(buffer + nesStateSize, mapperState, mapperSize);
