@@ -1,29 +1,35 @@
 name: Build and Release
 
 on:
+  push:
+    tags:
+      - 'v*'
   workflow_dispatch:
 
 jobs:
   build-and-release:
-    runs-on: windows-2019
+    runs-on: windows-2022
     permissions:
       contents: write
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
-      - name: Build Project
-        run: msbuild Fingemulator.sln /p:Configuration=Release
+      - name: Build with MSBuild using v142
+        run: msbuild Fingemulator.sln /p:Configuration=Release /p:PlatformToolset=v142
 
-      - name: Create GitHub Release and Upload Executable
+      - name: Zip Release folder
+        run: powershell Compress-Archive -Path x64\Release\* -DestinationPath release.zip
+
+      - name: Create GitHub Release and Upload ZIP
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
           generateReleaseNotes: true
-          artifacts: x64/Release/Fingemulator.exe
-          artifactContentType: application/octet-stream
+          artifacts: release.zip
+          artifactContentType: application/zip
