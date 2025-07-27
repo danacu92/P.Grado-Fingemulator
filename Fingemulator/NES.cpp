@@ -1,6 +1,5 @@
 #include "NES.h"
 #include <iostream>
-#include "SDL.h"
 #include "APU/nes_apu/apu_snapshot.h"
 using Byte = uint8_t;
 using Word = uint16_t;
